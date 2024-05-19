@@ -35,7 +35,7 @@
 <img src="./static/images/architecture.png" alt="archi" width="500" height="500">
 
 ### Architecture :
-<img src="./static/images/architecture.png" alt="archi" width="500" height="500">
+<img src="./static/images/newest_schema.png" alt="schema" width="500" height="500">
 
 
 ### instructions:
