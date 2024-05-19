@@ -31,6 +31,13 @@
 ### database managment system (DBMS):
 - **mysql**
 
+### database schema:
+<img src="./static/images/architecture.png" alt="archi" width="500" height="500">
+
+### Architecture :
+<img src="./static/images/architecture.png" alt="archi" width="500" height="500">
+
+
 ### instructions:
 - runing flask app with debug mode set to on :
 ***$ export FLASK_DEBUG=1***
