@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Get started</title>
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/beast.png') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/choose.css') }}">
+</head>
+<body>
+    <div class="banner">
+        <div class="wrapper">
+            <div class="content">
+                <h2>Define your Job</h2>
+                <p>We will move to the next step please choose your profession in football domain are you a :</p>
+                <div class="btn">
+                    <a href="{{url_for('register_player')}}">Player</a>
+                    <a href="{{url_for('register_agent')}}">Agent</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const X = () => {
+            const menu = document.querySelector('.bar');
+            const nav = document.querySelector('.menu');
+            
+            menu.addEventListener('click', () => {
+               menu.classList.toggle('bar-active');
+                nav.classList.toggle('nav-active');
+            });
+        }
+        X();
+    </script>
+
+</body>
+</html>

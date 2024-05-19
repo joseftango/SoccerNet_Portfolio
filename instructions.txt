@@ -1,0 +1,6 @@
+runing flask app with debug mode set to on :
+$ export FLASK_DEBUG=1
+$ flask run
+
+make sure to start mysql before runing the flask app :
+$ sudo service mysql start

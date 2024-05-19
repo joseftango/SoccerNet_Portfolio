@@ -1,0 +1,168 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background: url(../images/staduim.jpg) no-repeat center;
+	background-size: cover;
+	filter: brightness(0.8);
+
+}
+
+/* navbar */
+*{
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+  }
+  body{
+	font-family: montserrat;
+  }
+  nav{
+	background-color: aqua;
+	height: 80px;
+	width: 98%;
+	border-radius: 13px;
+	margin-top: 10px;
+	margin-left: 1%;
+  }
+
+  label.logo{
+	line-height: 80px;
+	padding: 0 10px;
+	font-weight: bold;
+	color: #666777;
+	font-size: 30px;
+	font-family: system-ui;
+	}
+
+  [alt="beast.png"] {
+	width: 70px;
+	height: 70px;
+	border-radius: 10px;
+	margin-right: 20px;
+	transform: translate(0px, -5px);
+  }
+  nav ul{
+	float: right;
+	margin-right: 20px;
+  }
+  nav ul li{
+	display: inline-block;
+	line-height: 80px;
+	margin: 0 5px;
+  }
+  nav ul li a{
+	color: #666777;
+	font-size: 14px;
+	padding: 7px 13px;
+	border-radius: 3px;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: 600;
+	font-family: system-ui;
+  }
+  nav ul li .login {
+	background-color:#009778;
+	border-radius: 50px;
+	color: white;
+  }
+
+  nav ul li .login:hover {
+	background-color:#00b383;
+  }
+  a.active,a:hover{
+	color: black;
+	transition: .5s;
+  }
+  .checkbtn{
+	font-size: 30px;
+	color: white;
+	float: right;
+	line-height: 80px;
+	margin-right: 40px;
+	cursor: pointer;
+	display: none;
+  }
+  #check{
+	display: none;
+  }
+  /* @media (max-width: 952px){
+	label.logo{
+	  font-size: 30px;
+	  padding: 0px;
+	  width: 100%;
+	  text-align: center;
+	}
+	nav ul li a{
+	  font-size: 16px;
+	}
+  } */
+  @media (max-width: 858px){
+	.checkbtn{
+	  display: none;
+	}
+	ul{
+	  position: relative;
+	  width: 100%;
+	  height: 150vh;
+	  background: #2c3e50;
+	  top: 80px;
+	  left: -100%;
+	  text-align: center;
+	  transition: all .5s;
+	}
+	nav .logo {
+		width: 100%;
+		text-align: center;
+	}
+	nav ul li{
+	  display: block;
+	  margin: 50px 0;
+	  line-height: 30px;
+	}
+	nav ul li a{
+	  font-size: 20px;
+	}
+	a:hover,a.active{
+	  background: none;
+	  color: #0082e6;
+	}
+	#check:checked ~ ul{
+	  left: 0;
+	  margin: 0px;
+	  top: 0;
+	}
+  }
+  section{
+	background: url(bg1.jpg) no-repeat;
+	background-size: cover;
+	height: calc(100vh - 80px);
+  }
+
+@media (max-width: 858px) {
+	nav {
+		height: 150px;
+	}
+}
+
+/* end navbar */
+
+.container {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.container img {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 950px;
+	height: 150vh;
+	border-radius: 20px;
+}
+

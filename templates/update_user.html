@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Update user page</title>
+	<!-- Import bootstrap5 css -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/beast.png') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/profiles.css') }}">
+	<style>
+		.card {
+			width: 35rem;
+		}
+		.card .card_content {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 18px;
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<input type="checkbox" id="check" checked>
+		<h1 for="check" class="checkbtn">
+			<i class="fas fa-bars"></i>
+		</h1>
+		<label class="logo"><img src="{{ url_for('static', filename='images/beast.png') }}"
+				alt="beast.png">SoccerNet</label>
+		<ul>
+			{% if 'email' in session and session['role'] == 'agent' %}
+			<li><a href="{{ url_for('players') }}" class="login">back to Players</a></li>
+			{% elif 'email' in session and session['role'] == 'player' %}
+			<li><a href="{{ url_for('agents') }}" class="login">back to Agents</a></li>
+			{% endif %}
+		</ul>
+	</nav>
+
+	<div class="container">
+
+		<div class="card">
+			<div class="card_profile_img">
+				<img src="{{ user.image_path }}" alt="{{ user.image_name }}" />
+			</div>
+			<div class="card_content">
+				<form action="{{url_for('update_user')}}" enctype="multipart/form-data" method="post">
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">{{user.email}}</label>
+						<input type="text" class="form-control" id="exampleFormControlInput1"
+							placeholder="update email" name="email" >
+					</div>
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">{{user.whatsapp}}</label>
+						<input type="text" class="form-control" id="exampleFormControlInput1"
+							placeholder="update whatsaap" name="whatsaap" >
+					</div>
+					{% if session['role'] == 'player' %}
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">{{user.team}}</label>
+						<input type="text" class="form-control" id="exampleFormControlInput1"
+							placeholder="update your Team" name="team" >
+					</div>
+					{% endif %}
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">new photo</label>
+						<input type="file" class="form-control" id="exampleFormControlInput1"
+							placeholder="new photo" name="image" >
+					</div>
+
+					{% if session['role'] == 'player' %}
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">new CV</label>
+						<input type="file" class="form-control" id="exampleFormControlInput1"
+							placeholder="new CV" name="cv" >
+					</div>
+					{% endif %}
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+					<button type="submit" class="btn btn-secondary btn-lg">Update</button>
+				</form>
+				{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<p class="warning">{{ messages[0] }}</p>
+				{% endif %}
+				{% endwith %}
+			</div>
+		</div>
+
+	</div>
+
+
+
+	<!-- bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+		</script>
+	<script>
+		function deleteUser(event) {
+			event.preventDefault();
+			if (confirm("Are you sure you want to delete your profile?")) {
+				document.getElementById('delete-form').submit();
+			}
+		}
+	</script>
+
+</body>
+
+</html>

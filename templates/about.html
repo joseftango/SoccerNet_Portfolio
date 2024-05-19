@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About</title>
+	<!-- Import bootstrap5 css -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/about.css') }}">
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/beast.png') }}">
+</head>
+
+<body>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand me-auto" href="{{url_for('home')}}"><img src="{{ url_for('static', filename='images/beast.png') }}" class="navbar-brand me-auto"
+					alt="soccer-logo"></a>
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+				aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+						<li class="nav-item">
+							<a class="nav-link mx-lg-2 active" href="">About</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link mx-lg-2" aria-current="page" href="{{url_for('home')}}">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link mx-lg-2" href="{{url_for('services')}}">Services</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link mx-lg-2" href="#contact">Contact</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- End Navbar -->
+
+
+	<!-- Hero section -->
+	<section class="hero-section">
+		<div class="container d-flex align-items-center justify-content-center fs-1 flex-column" id="desc-container">
+			<h1>SoccerNet is a comprehensive web platform designed to facilitate the connection between football
+				agents and football players.It provides a seamless
+				interface for players to showcase their skills, achievements,
+				and career aspirations, while enabling agents to discover and connect with promising
+				talent. The platform aims to bridge the gap between players and agents, fostering a
+				professional network that enhances career opportunities and growth within the football industry and there is our feature below.<br>
+				- Profile Management: <br>
+				Comprehensive Profiles Players can create detailed profiles including personal information, career statistics, achievements, and a personal statement. Agents can showcase their portfolio, including players they represent and their achievements.
+				Multimedia Uploads Players can upload images and CVs, providing a visual and comprehensive overview of their careers. Agents can upload promotional materials and successful client stories.<br>
+				
+				- Advanced Search and Filtering:<br>
+				Player Search for Agents Agents can search for players based on various criteria such as position, age, nationality, and skill level.
+				Agent Search for Players Players can find agents based on their specialization, reputation, and the types of players they represent.<br>
+				
+				- Direct Messaging and Communication:<br>
+				Instant Messaging Secure messaging system allowing direct communication between players and agents. This feature facilitates initial contact and ongoing negotiations.
+				Notifications: Users receive real-time notifications for new messages, profile views, and updates, ensuring they stay informed and engaged.
+				
+			</h1>
+		</div>
+	</section>
+
+	<!-- End Hero section -->
+			<!-- Footer -->
+			<footer class="footer-distributed">
+				<div class="footer-left">
+					<div class="logoh3">
+						<img src="{{ url_for('static', filename='images/beast.png') }}" alt="logo">
+						<h3>Soccer Net</h3>
+					</div>
+					<p class="footer-links">
+						<a href="{{url_for('home')}}">Home</a>
+						|
+						<a href="#">About</a>
+						|
+						<a href="#contact">Contact</a>
+						|
+						<a href="{{url_for('choose')}}">Register</a>
+					</p>
+					<p class="footer-company-name">Copyright © 2024 <strong>Soccer Net company</strong> All rights reserved</p>
+				</div>
+
+				<div class="footer-center">
+					<div>
+						<i class="fa fa-map-marker"></i>
+						<p><span>Tunisia</span>
+							Nabeul</p>
+					</div>
+
+					<div>
+						<i class="fa fa-phone"></i>
+						<p>+216 74**9**258</p>
+					</div>
+					<div>
+						<i class="fa fa-envelope"></i>
+						<p><a href="soccerNet50@gmail.com">soccerNet50@gmail.com</a></p>
+					</div>
+				</div>
+				<div class="footer-right">
+					<p class="footer-company-about">
+						<span>About the company</span>
+						<strong>Soccer Net</strong> is a company dedicated for player transfert processes and gathering
+						of sport agent for footballers trading 
+					</p>
+					<div class="footer-icons" id="contact">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-instagram"></i></a>
+						<a href="#"><i class="fa fa-linkedin"></i></a>
+					</div>
+				</div>
+			</footer>
+		
+	<!-- bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
