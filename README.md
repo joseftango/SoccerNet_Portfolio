@@ -31,10 +31,10 @@
 ### database managment system (DBMS):
 - **mysql**
 
-### database schema:
+### Architecture :
 <img src="./static/images/architecture.png" alt="archi" width="700" height="500">
 
-### Architecture :
+### database schema:
 <img src="./static/images/newest_schema.png" alt="schema" width="500" height="500">
 
 
