@@ -1,6 +1,6 @@
 # SoccerNet portfolio
 
-<img src="./static/images/beast.png" alt="beast" width="500" height="350" style="border-radius:30%">
+<img src="./static/images/beast.png" alt="beast" width="500" height="350" style="border-radius:30px;">
 
 ### *Description of the project* : 
 *There is a lot of sport agents looking for football players for trading and sell them to appropriate teams whether they are amateur semi-pro or professional and traveling around the world for visiting a lot of teams also watching their matches for hunting Feasts such as pro football players to make a deals with some attractive category it can be exhausting and costly mission to earn a good income. Same as the soccer player who passed a respective career in his youth team and wants to change his experience to develop himself as a footballer to find his proper team and step by step for fame. same as a senior player who wants to start a new experience in another team. So our system came to fix those two problems. SoccerNet came To connect agents with football players together for communication and eventually arrive to deal Satisfy both parties.*
