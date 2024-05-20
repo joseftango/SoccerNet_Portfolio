@@ -2,12 +2,11 @@
 
 <img src="./static/images/beast.png" alt="beast" width="500" height="350">
 
-### *Description* : 
-*Description of the project:*
+### *Description of the project* : 
 *There is a lot of sport agents looking for football players for trading and sell them to appropriate teams whether they are amateur semi-pro or professional and traveling around the world for visiting a lot of teams also watching their matches for hunting Feasts such as pro football players to make a deals with some attractive category it can be exhausting and costly mission to earn a good income. Same as the soccer player who passed a respective career in his youth team and wants to change his experience to develop himself as a footballer to find his proper team and step by step for fame. same as a senior player who wants to start a new experience in another team. So our system came to fix those two problems. SoccerNet came To connect agents with football players together for communication and eventually arrive to deal Satisfy both parties.*
 
 ### *Team* : 
-- **solo**
+- **solo work**
 
 ### *programming languages used:*
 - **Python**
@@ -20,7 +19,7 @@
 - **Mysqlalchemy orm**
 - **bootstrap**
 
-### requirments:
+### *requirments*:
 - **pip install Flask**
 - **pip install SQLAlchemy**
 - **pip install Flask-WTF**
@@ -28,26 +27,29 @@
 - **pip install datetime**
 - **pip install bcrypt**
 
-### database managment system (DBMS):
+### *database managment system (DBMS)*:
 - **mysql**
 
-### Architecture :
+### *Architecture* :
 <img src="./static/images/architecture.png" alt="archi" width="700" height="500">
 
-### database schema:
+### *database schema* :
 <img src="./static/images/newest_schema.png" alt="schema" width="500" height="500">
 
+### *Home Page Interface* :
+<img src="./static/images/web_app.jpeg" alt="schema" width="500" height="500">
 
-### instructions:
-- runing flask app with debug mode set to on :
-***$ export FLASK_DEBUG=1***
-***$ flask run***
 
-- make sure to start mysql before runing the flask app :
-***$ sudo service mysql start***
+### instructions :
+- *set debug mode:* <br> 
+**$ export FLASK_DEBUG=1** 
+- *runing flask app:* <br> 
+**$ flask run** 
+- *make sure to start mysql before runing the flask app:* <br>
+**$ sudo service mysql start**
 
-### Features:
-- Profile Management: 
+### Features :
+- Profile Management:
 *Agents and players can create and manage their profiles.*
 *Profiles include detailed information such as experience, achievements, and personal details.*
 
