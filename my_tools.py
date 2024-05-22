@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 ''' tools module '''
 from datetime import datetime
-# Module of datetime
 import re
 # Module of regular expression is used with search()
 

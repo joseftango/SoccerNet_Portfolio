@@ -42,8 +42,8 @@
 
 ### instructions :
 - *set debug mode:* <br> 
-**$ export FLASK_DEBUG=1** 
-- *runing flask app:* <br> 
+**$ export FLASK_DEBUG=1**
+- *runing flask app:* <br>
 **$ flask run** 
 - *make sure to start mysql before runing the flask app:* <br>
 **$ sudo service mysql start**

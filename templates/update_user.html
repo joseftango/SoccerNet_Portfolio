@@ -16,6 +16,7 @@
 		.card {
 			width: 35rem;
 		}
+
 		.card .card_content {
 			font-family: Arial, Helvetica, sans-serif;
 			font-size: 18px;
@@ -50,40 +51,66 @@
 				<form action="{{url_for('update_user')}}" enctype="multipart/form-data" method="post">
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label">{{user.email}}</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1"
-							placeholder="update email" name="email" >
+						<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="update email"
+							name="email">
 					</div>
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label">{{user.whatsapp}}</label>
 						<input type="text" class="form-control" id="exampleFormControlInput1"
-							placeholder="update whatsaap" name="whatsaap" >
+							placeholder="update whatsaap" name="whatsaap">
 					</div>
+					<!--agent fields-->
+					{% if session['role'] == 'agent' %}
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">{{user.residence_country}}</label>
+							<input type="text" class="form-control" id="exampleFormControlInput1"
+							placeholder="residence country" name="residence_country">
+						</div>
+
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">{{user.city}}</label>
+							<input type="text" class="form-control" id="exampleFormControlInput1"
+							placeholder="City" name="city">
+						</div>
+
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">{{user.office_address}}</label>
+							<input type="text" class="form-control" id="exampleFormControlInput1"
+							placeholder="Office address" name="office_address">
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">{{user.years_experience}}</label>
+							<input type="number" class="form-control" id="exampleFormControlInput1"
+							placeholder="Years of experience" name="years_experience">
+						</div>
+					{% endif %}
+
 					{% if session['role'] == 'player' %}
-					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">{{user.team}}</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1"
-							placeholder="update your Team" name="team" >
-					</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">{{user.team}}</label>
+							<input type="text" class="form-control" id="exampleFormControlInput1"
+							placeholder="update your Team" name="team">
+						</div>
 					{% endif %}
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label">new photo</label>
-						<input type="file" class="form-control" id="exampleFormControlInput1"
-							placeholder="new photo" name="image" >
+						<input type="file" class="form-control" id="exampleFormControlInput1" placeholder="new photo"
+							name="image">
 					</div>
 
 					{% if session['role'] == 'player' %}
-					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">new CV</label>
-						<input type="file" class="form-control" id="exampleFormControlInput1"
-							placeholder="new CV" name="cv" >
-					</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">new CV</label>
+							<input type="file" class="form-control" id="exampleFormControlInput1" placeholder="new CV"
+							name="cv">
+						</div>
 					{% endif %}
 					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 					<button type="submit" class="btn btn-secondary btn-lg">Update</button>
 				</form>
 				{% with messages = get_flashed_messages() %}
 				{% if messages %}
-					<p class="warning">{{ messages[0] }}</p>
+				<p class="warning">{{ messages[0] }}</p>
 				{% endif %}
 				{% endwith %}
 			</div>

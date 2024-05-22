@@ -116,3 +116,4 @@ class Agent(db.Model):
 
 	def get_description(self):
 		return str(self)
+

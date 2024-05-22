@@ -3,8 +3,7 @@ from models import Player, Agent, db
 from flask_wtf import CSRFProtect
 from dotenv import dotenv_values
 from my_tools import valid_password
-
-
+from werkzeug.exceptions import HTTPException
 import os
 
 
@@ -73,16 +72,17 @@ def register_player():
 			flash(check_valid_pwd, 'error')
 			return render_template('player_register.html')
 
-
 		new_player = Player(firstname=firstname, lastname=lastname, birthday=birthday,\
 		nationality=nationality, gender=gender, whatsapp=whatsapp, team=team,\
 		email=email, password=password1, image_name=image_name, image_path=image_path,\
 		cv_name=cv_name, cv_path=cv_path)
+
 		db.session.add(new_player)
 		db.session.commit()
-		print(new_player.get_description())
+
 		flash('congratulations you have been registred successfully !', 'success')
 		return redirect('/login')
+
 	if 'email' in session:
 		return redirect('notfound')
 
@@ -132,6 +132,7 @@ def register_agent():
 
 		db.session.add(new_agent)
 		db.session.commit()
+
 		flash('congratulations you have been registred successfully !', 'success')
 		return redirect('login')
 
@@ -197,7 +198,9 @@ def logout():
 
 @app.route('/choose', methods=['GET'])
 def choose():
-	return render_template('choose.html')
+	if 'email' not in session:
+		return render_template('choose.html')
+	return redirect('/notfound')
 
 
 @app.route('/resume/<int:player_id>', methods=['GET'])
@@ -218,7 +221,9 @@ def profile():
 	if 'email' in session:
 		user = Player.query.filter_by(email=session['email']).first() or \
 Agent.query.filter_by(email=session['email']).first()
-	if user is None:
+		if user is None:
+			return redirect('/notfound')
+	else:
 		return redirect('/notfound')
 
 	return render_template('user_profile.html', user=user)
@@ -252,31 +257,46 @@ def update_user():
 Agent.query.filter_by(email=session['email']).first()
 
 	if request.method == 'POST':
-		email = request.form.get('email')
-		whatsapp = request.form.get('whatsaap')
-		team = request.form.get('team') if session['role'] == 'player' else None
-		image = request.files['image']
-		cv = request.files['cv'] if session['role'] == 'player' else None
+		email = request.form.get('email') # both
+		whatsapp = request.form.get('whatsaap') # both
+		image = request.files['image'] # both
+		team = request.form.get('team') if session['role'] == 'player' else None # player
+		cv = request.files['cv'] if session['role'] == 'player' else None # player
+		residence_country = request.form.get('residence_country') # agent
+		city = request.form.get('city') # agent
+		office_address = request.form.get('office_address') # agent
+		years_experience = request.form.get('years_experience') # agent
 
 		if email:
 			user.email = email
 			session['email'] = email
 		if whatsapp:
 			user.whatsapp = whatsapp
-		if team and session['role'] == 'player':
-			user.team = team
-					
+
+		if session['role'] == 'player':
+			if team:
+				user.team = team
+			if cv:
+				cv_name = cv.filename
+				user.cv_name = cv_name
+				user.cv_path = os.path.join(app.config['UPLOAD_FOLDER'], cv_name)
+				cv.save(os.path.join('static/uploads', cv_name))
+
+		if session['role'] == 'agent':
+			if residence_country:
+				user.residence_country = residence_country
+			if city:
+				user.city = city
+			if office_address:
+				user.office_address = office_address
+			if years_experience:
+				user.years_experience = years_experience
+
 		if image:
 			image_name = image.filename
 			user.image_name = image_name
 			user.image_path = os.path.join(app.config['UPLOAD_FOLDER'], image_name)
 			image.save(os.path.join('static/uploads', image_name))
-
-		if session['role'] == 'player' and cv:
-			cv_name = cv.filename
-			user.cv_name = cv_name
-			user.cv_path = os.path.join(app.config['UPLOAD_FOLDER'], cv_name)
-			cv.save(os.path.join('static/uploads', cv_name))
 
 		db.session.commit()
 		flash('Your profile has been updated', 'success')
@@ -289,6 +309,7 @@ Agent.query.filter_by(email=session['email']).first()
 def about():
 	return render_template('about.html')
 
+
 @app.route('/services', methods=['GET'])
 def services():
 	return render_template('services.html')
@@ -297,6 +318,11 @@ def services():
 @app.route('/notfound', methods=['GET'])
 def notfound():
 	return render_template('error.html')
+
+
+@app.errorhandler(HTTPException)
+def handleError(err):
+	return redirect('notfound')
 
 
 if __name__ == '__main__':
